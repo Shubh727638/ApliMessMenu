@@ -25,22 +25,25 @@ const Header = () => {
         <MenuBookIcon />
         Apli Mess Menu
       </Typography>
-      <Divider/>
+      <Divider />
       <ul className="navigation-mobile" style={{ marginTop: '20px', listStyle: 'none', padding: '0' }}>
-      <li style={{ marginBottom: '10px' }}>
-        <Link to={'/'} style={{ textDecoration: 'none', color: '#333', fontSize: '18px' }}>Home</Link>
-      </li>
-      <li style={{ marginBottom: '10px' }}>
-        <Link to={'/menu'} style={{ textDecoration: 'none', color: '#333', fontSize: '18px' }}>Menu</Link>
-      </li>
-      <li style={{ marginBottom: '10px' }}>
-        <Link to={'/about'} style={{ textDecoration: 'none', color: '#333', fontSize: '18px' }}>About</Link>
-      </li>
-      <li style={{ marginBottom: '10px' }}>
-        <Link to={'/contact'} style={{ textDecoration: 'none', color: '#333', fontSize: '18px' }}>Contact</Link>
-      </li>
-    </ul>
-  </Box>
+        <li style={{ marginBottom: '10px' }}>
+          <Link to={'/'} style={{ textDecoration: 'none', color: '#333', fontSize: '18px' }}>Home</Link>
+        </li>
+        <li style={{ marginBottom: '10px' }}>
+          <Link to={'/about'} style={{ textDecoration: 'none', color: '#333', fontSize: '18px' }}>About</Link>
+        </li>
+        <li style={{ marginBottom: '10px' }}>
+          <Link to={'/mess'} style={{ textDecoration: 'none', color: '#333', fontSize: '18px' }}>Menu</Link>
+        </li>
+        <li style={{ marginBottom: '10px' }}>
+          <Link to={'/contact'} style={{ textDecoration: 'none', color: '#333', fontSize: '18px' }}>Contact</Link>
+        </li>
+        <li style={{ marginBottom: '10px' }}>
+          <Link to={'/plandetails'} style={{ textDecoration: 'none', color: '#333', fontSize: '18px' }}>Plan Details</Link>
+        </li>
+      </ul>
+    </Box>
   )
 
   return (
@@ -59,7 +62,7 @@ const Header = () => {
 
                 }}
                 onClick={handleDrawerToggle}
-                >
+              >
               </MenuOpenIcon>
             </IconButton>
             <Typography
@@ -71,32 +74,37 @@ const Header = () => {
               Apli Mess Menu
             </Typography>
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
-              <ul className="navigation-menu" >
-                <li>
-                  <Link to={'/'}>Home</Link>
+              <ul className="navigation-menu">
+                <li style={{ marginBottom: '10px' }}>
+                  <Link to={'/'} style={{ textDecoration: 'none', color: '#333', fontSize: '18px' }}>Home</Link>
                 </li>
-                <li>
-                  <Link to={'/menu'}>Menu</Link>
+                <li style={{ marginBottom: '10px' }}>
+                  <Link to={'/about'} style={{ textDecoration: 'none', color: '#333', fontSize: '18px' }}>About</Link>
                 </li>
-                <li>
-                  <Link to={'/about'}>About</Link>
+                <li style={{ marginBottom: '10px' }}>
+                  <Link to={'/mess'} style={{ textDecoration: 'none', color: '#333', fontSize: '18px' }}>Menu</Link>
                 </li>
-                <li>
-                  <Link to={'/contact'}>Contact</Link>
+                <li style={{ marginBottom: '10px' }}>
+                  <Link to={'/contact'} style={{ textDecoration: 'none', color: '#333', fontSize: '18px' }}>Contact</Link>
                 </li>
+                <li style={{ marginBottom: '10px' }}>
+                  <Link to={'/plandetails'} style={{ textDecoration: 'none', color: '#333', fontSize: '18px' }}>Plan Details</Link>
+                </li>
+
               </ul>
             </Box>
           </Toolbar>
         </AppBar>
         <Box component="nav">
-           <Drawer variant='temporary' open={mobileOpen} onClose={handleDrawerToggle} sx={{display:{xs:"block", sm:"none"},
-           "& .MuiDrawer-paper":{
-                boxSizing:"border-box",
-                width:"240px",
-           },
-            }}>
+          <Drawer variant='temporary' open={mobileOpen} onClose={handleDrawerToggle} sx={{
+            display: { xs: "block", sm: "none" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: "240px",
+            },
+          }}>
             {drawer}
-           </Drawer>
+          </Drawer>
         </Box>
       </Box>
     </>
