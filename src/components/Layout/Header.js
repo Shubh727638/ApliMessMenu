@@ -1,39 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { AppBar, Box, Divider, Drawer, IconButton, Toolbar, Typography } from "@mui/material";
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import { Link } from 'react-router-dom';
-import "../../styles/HeaderStyles.css"
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
-
-
+import "../../styles/HeaderStyles.css";
 
 const Header = () => {
-  const [mobileOpen, setMobileOpen] = useState(false)
-  //handle menu Click
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen)
-  }
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  //menu Drawer
+  // handle menu Click
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
+  // menu Drawer
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography
-        color={'black'}
-        variant='h6'
-        component="div"
-        sx={{ flexGrow: 1, }}>
+      <Typography color={'black'} variant='h6' component="div" sx={{ flexGrow: 1 }}>
         <MenuBookIcon />
         Apli Mess Menu
       </Typography>
       <Divider />
       <ul className="navigation-mobile">
-        <li >
+        <li>
           <Link to={'/'} >Home</Link>
         </li>
-        <li >
+        <li>
           <Link to={'/about'} >About</Link>
         </li>
-        <li >
+        <li>
           <Link to={'/mess'} >Mess</Link>
         </li>
         <li>
@@ -44,32 +39,17 @@ const Header = () => {
         </li>
       </ul>
     </Box>
-  )
-//menu Drawer end
+  );
+
   return (
     <>
       <Box>
-      <AppBar component={"nav"} elevation={0} sx={{ bgcolor: "#f0f0f0", color: "#333", boxShadow: "none" }}>
+        <AppBar component={"nav"} elevation={0} sx={{ bgcolor: "#f0f0f0", color: "#333", boxShadow: "none" }}>
           <Toolbar>
-            <IconButton>
-              <MenuOpenIcon
-                color="inherit"
-                aria-label="open drawer"
-                edge="start"
-                sx={{
-                  mr: 2,
-                  display: { sm: "none" }
-
-                }}
-                onClick={handleDrawerToggle}
-              >
-              </MenuOpenIcon>
+            <IconButton onClick={handleDrawerToggle} sx={{ display: { sm: "none" } }}>
+              <MenuOpenIcon color="inherit" aria-label="open drawer" edge="start" />
             </IconButton>
-            <Typography
-              color={'black'}
-              variant='h6'
-              component="div"
-              sx={{ flexGrow: 1 }}>
+            <Typography color={'black'} variant='h6' component="div" sx={{ flexGrow: 1 }}>
               <MenuBookIcon />
               Apli Mess Menu
             </Typography>
@@ -78,10 +58,10 @@ const Header = () => {
                 <li>
                   <Link to={'/'} >Home</Link>
                 </li>
-                <li >
+                <li>
                   <Link to={'/about'} >About</Link>
                 </li>
-                <li >
+                <li>
                   <Link to={'/mess'} >Mess</Link>
                 </li>
                 <li>
@@ -90,25 +70,19 @@ const Header = () => {
                 <li>
                   <Link to={'/plandetails'}>Plan Details</Link>
                 </li>
-
               </ul>
             </Box>
           </Toolbar>
         </AppBar>
         <Box component="nav">
-          <Drawer variant='temporary' open={mobileOpen} onClose={handleDrawerToggle} sx={{
-            display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: "240px",
-            },
-          }}>
+          <Drawer variant='temporary' open={mobileOpen} onClose={handleDrawerToggle} sx={{ display: { xs: "block", sm: "none" }, "& .MuiDrawer-paper": { boxSizing: "border-box", width: "240px" } }}>
             {drawer}
           </Drawer>
         </Box>
-        <Toolbar/>
+        <Toolbar />
       </Box>
     </>
-  )
-}
-export default Header
+  );
+};
+
+export default Header;
