@@ -12,3 +12,16 @@
     text-decoration: none;
     color: black;
 }
+
+/*mobile css */
+.navigation-mobile{
+    list-style: 'none', 
+}
+.navigation-mobile li{
+    margin-top: 20px;
+}
+.navigation-mobile li a{
+    text-decoration: none;
+    Color:black;
+    font-size: 18px;
+}

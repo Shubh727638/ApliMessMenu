@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from '../components/Layout/Layout'
 
-const Menu = () => {
+const Mess = () => {
   return (
     <Layout>
       <h1>Mess Page</h1>
@@ -9,4 +9,4 @@ const Menu = () => {
   )
 }
 
-export default Menu
+export default Mess

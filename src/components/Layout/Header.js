@@ -26,30 +26,30 @@ const Header = () => {
         Apli Mess Menu
       </Typography>
       <Divider />
-      <ul className="navigation-mobile" style={{ marginTop: '20px', listStyle: 'none', padding: '0' }}>
-        <li style={{ marginBottom: '10px' }}>
-          <Link to={'/'} style={{ textDecoration: 'none', color: '#333', fontSize: '18px' }}>Home</Link>
+      <ul className="navigation-mobile">
+        <li >
+          <Link to={'/'} >Home</Link>
         </li>
-        <li style={{ marginBottom: '10px' }}>
-          <Link to={'/about'} style={{ textDecoration: 'none', color: '#333', fontSize: '18px' }}>About</Link>
+        <li >
+          <Link to={'/about'} >About</Link>
         </li>
-        <li style={{ marginBottom: '10px' }}>
-          <Link to={'/mess'} style={{ textDecoration: 'none', color: '#333', fontSize: '18px' }}>Menu</Link>
+        <li >
+          <Link to={'/mess'} >Mess</Link>
         </li>
-        <li style={{ marginBottom: '10px' }}>
-          <Link to={'/contact'} style={{ textDecoration: 'none', color: '#333', fontSize: '18px' }}>Contact</Link>
+        <li>
+          <Link to={'/contact'} >Contact</Link>
         </li>
-        <li style={{ marginBottom: '10px' }}>
-          <Link to={'/plandetails'} style={{ textDecoration: 'none', color: '#333', fontSize: '18px' }}>Plan Details</Link>
+        <li>
+          <Link to={'/plandetails'} >Plan Details</Link>
         </li>
       </ul>
     </Box>
   )
-
+//menu Drawer end
   return (
     <>
       <Box>
-        <AppBar component={"nav"} sx={{ bgcolor: "lightgray" }}>
+      <AppBar component={"nav"} elevation={0} sx={{ bgcolor: "#f0f0f0", color: "#333", boxShadow: "none" }}>
           <Toolbar>
             <IconButton>
               <MenuOpenIcon
@@ -75,20 +75,20 @@ const Header = () => {
             </Typography>
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
               <ul className="navigation-menu">
-                <li style={{ marginBottom: '10px' }}>
-                  <Link to={'/'} style={{ textDecoration: 'none', color: '#333', fontSize: '18px' }}>Home</Link>
+                <li>
+                  <Link to={'/'} >Home</Link>
                 </li>
-                <li style={{ marginBottom: '10px' }}>
-                  <Link to={'/about'} style={{ textDecoration: 'none', color: '#333', fontSize: '18px' }}>About</Link>
+                <li >
+                  <Link to={'/about'} >About</Link>
                 </li>
-                <li style={{ marginBottom: '10px' }}>
-                  <Link to={'/mess'} style={{ textDecoration: 'none', color: '#333', fontSize: '18px' }}>Menu</Link>
+                <li >
+                  <Link to={'/mess'} >Mess</Link>
                 </li>
-                <li style={{ marginBottom: '10px' }}>
-                  <Link to={'/contact'} style={{ textDecoration: 'none', color: '#333', fontSize: '18px' }}>Contact</Link>
+                <li>
+                  <Link to={'/contact'} >Contact</Link>
                 </li>
-                <li style={{ marginBottom: '10px' }}>
-                  <Link to={'/plandetails'} style={{ textDecoration: 'none', color: '#333', fontSize: '18px' }}>Plan Details</Link>
+                <li>
+                  <Link to={'/plandetails'}>Plan Details</Link>
                 </li>
 
               </ul>
@@ -106,6 +106,7 @@ const Header = () => {
             {drawer}
           </Drawer>
         </Box>
+        <Toolbar/>
       </Box>
     </>
   )
