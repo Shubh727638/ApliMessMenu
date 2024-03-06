@@ -4,6 +4,7 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import { Link } from 'react-router-dom';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import "../../styles/HeaderStyles.css";
+import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu'; // Import RestaurantMenuIcon
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -17,7 +18,7 @@ const Header = () => {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography color={'black'} variant='h6' component="div" sx={{ flexGrow: 1 }}>
-        <MenuBookIcon />
+        <RestaurantMenuIcon />
         Apli Mess Menu
       </Typography>
       <Divider />
@@ -50,7 +51,7 @@ const Header = () => {
               <MenuOpenIcon color="inherit" aria-label="open drawer" edge="start" />
             </IconButton>
             <Typography color={'black'} variant='h6' component="div" sx={{ flexGrow: 1 }}>
-              <MenuBookIcon />
+              <RestaurantMenuIcon />
               Apli Mess Menu
             </Typography>
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
