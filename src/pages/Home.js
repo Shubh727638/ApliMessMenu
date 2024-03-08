@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../components/Layout/Layout';
-import { Button, Typography } from '@mui/material';
+import { Button, Typography, Grid } from '@mui/material'; // Added Grid for better layout control
 import { Link } from 'react-router-dom';
 import Banner from '../Images/banner.jpeg';
 import { Search, Star, Bookmark } from '@mui/icons-material'; // Import icons
@@ -24,33 +24,41 @@ const Home = () => {
           </Link>
         </div>
         <div className="featuresContainer">
-          <div className="feature">
-            <Search sx={{ fontSize: '4rem', color: '#FFA726', mb: 2 }} />
-            <Typography variant="h2" sx={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#FFA726', mb: 2, textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }}>
-              Easy Search
-            </Typography>
-            <Typography variant="body1" sx={{ fontSize: '1.25rem', color: '#FFFFFF', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }}>
-              Find mess menus with just a few clicks.
-            </Typography>
-          </div>
-          <div className="feature">
-            <Star sx={{ fontSize: '4rem', color: '#FFA726', mb: 2 }} />
-            <Typography variant="h2" sx={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#FFA726', mb: 2, textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }}>
-              Reviews & Ratings
-            </Typography>
-            <Typography variant="body1" sx={{ fontSize: '1.25rem', color: '#FFFFFF', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }}>
-              Read honest reviews and ratings from fellow food enthusiasts.
-            </Typography>
-          </div>
-          <div className="feature">
-            <Bookmark sx={{ fontSize: '4rem', color: '#FFA726', mb: 2 }} />
-            <Typography variant="h2" sx={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#FFA726', mb: 2, textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }}>
-              Save Favorites
-            </Typography>
-            <Typography variant="body1" sx={{ fontSize: '1.25rem', color: '#FFFFFF', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }}>
-              Bookmark your preferred menus for future reference.
-            </Typography>
-          </div>
+          <Grid container spacing={4} justifyContent="center"> {/* Grid container for features */}
+            <Grid item xs={12} sm={6} md={4}> {/* Grid item for each feature */}
+              <div className="feature">
+                <Search sx={{ fontSize: '4rem', color: '#FFA726', mb: 2 }} />
+                <Typography variant="h2" sx={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#FFA726', mb: 2, textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }}>
+                  Easy Search
+                </Typography>
+                <Typography variant="body1" sx={{ fontSize: '1.25rem', color: '#FFFFFF', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }}>
+                  Find mess menus with just a few clicks.
+                </Typography>
+              </div>
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <div className="feature">
+                <Star sx={{ fontSize: '4rem', color: '#FFA726', mb: 2 }} />
+                <Typography variant="h2" sx={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#FFA726', mb: 2, textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }}>
+                  Reviews & Ratings
+                </Typography>
+                <Typography variant="body1" sx={{ fontSize: '1.25rem', color: '#FFFFFF', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }}>
+                  Read honest reviews and ratings from fellow food enthusiasts.
+                </Typography>
+              </div>
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <div className="feature">
+                <Bookmark sx={{ fontSize: '4rem', color: '#FFA726', mb: 2 }} />
+                <Typography variant="h2" sx={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#FFA726', mb: 2, textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }}>
+                  Save Favorites
+                </Typography>
+                <Typography variant="body1" sx={{ fontSize: '1.25rem', color: '#FFFFFF', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }}>
+                  Bookmark your preferred menus for future reference.
+                </Typography>
+              </div>
+            </Grid>
+          </Grid>
         </div>
       </div>
     </Layout>

@@ -18,6 +18,7 @@ function App() {
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/planDetails" element={<PlanDetails/>}/>
         <Route path="*" element={<Pagenotfound/>}/>
+        
       </Routes>
       </BrowserRouter>
     </div>

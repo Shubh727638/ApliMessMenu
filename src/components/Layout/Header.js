@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { AppBar, Box, Divider, Drawer, IconButton, Toolbar, Typography } from "@mui/material";
-import MenuBookIcon from '@mui/icons-material/MenuBook';
-import { Link } from 'react-router-dom';
+//import MenuBookIcon from '@mui/icons-material/MenuBook';
+import { Link, useLocation } from 'react-router-dom'; // Import useLocation
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import "../../styles/HeaderStyles.css";
 import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu'; // Import RestaurantMenuIcon
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation(); // Get the current location
 
   // handle menu Click
   const handleDrawerToggle = () => {
@@ -24,19 +25,19 @@ const Header = () => {
       <Divider />
       <ul className="navigation-mobile">
         <li>
-          <Link to={'/'} >Home</Link>
+          <Link to={'/'} className={location.pathname === '/' ? 'active' : ''}>Home</Link>
         </li>
         <li>
-          <Link to={'/about'} >About</Link>
+          <Link to={'/about'} className={location.pathname === '/about' ? 'active' : ''}>About</Link>
         </li>
         <li>
-          <Link to={'/mess'} >Mess</Link>
+          <Link to={'/mess'} className={location.pathname === '/mess' ? 'active' : ''}>Mess</Link>
         </li>
         <li>
-          <Link to={'/contact'} >Contact</Link>
+          <Link to={'/contact'} className={location.pathname === '/contact' ? 'active' : ''}>Contact</Link>
         </li>
         <li>
-          <Link to={'/plandetails'} >Plan Details</Link>
+          <Link to={'/plandetails'} className={location.pathname === '/plandetails' ? 'active' : ''}>Plan Details</Link>
         </li>
       </ul>
     </Box>
@@ -57,19 +58,19 @@ const Header = () => {
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
               <ul className="navigation-menu">
                 <li>
-                  <Link to={'/'} >Home</Link>
+                  <Link to={'/'} className={location.pathname === '/' ? 'active' : ''}>Home</Link>
                 </li>
                 <li>
-                  <Link to={'/about'} >About</Link>
+                  <Link to={'/about'} className={location.pathname === '/about' ? 'active' : ''}>About</Link>
                 </li>
                 <li>
-                  <Link to={'/mess'} >Mess</Link>
+                  <Link to={'/mess'} className={location.pathname === '/mess' ? 'active' : ''}>Mess</Link>
                 </li>
                 <li>
-                  <Link to={'/contact'} >Contact</Link>
+                  <Link to={'/contact'} className={location.pathname === '/contact' ? 'active' : ''}>Contact</Link>
                 </li>
                 <li>
-                  <Link to={'/plandetails'}>Plan Details</Link>
+                  <Link to={'/plandetails'} className={location.pathname === '/plandetails' ? 'active' : ''}>Plan Details</Link>
                 </li>
               </ul>
             </Box>
