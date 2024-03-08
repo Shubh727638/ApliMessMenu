@@ -1,0 +1,100 @@
+/* CSS styles for the contact page */
+
+.contact-container {
+    padding: 50px;
+    background-color: #f9f9f9;
+  }
+  
+  .contact-heading {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #ff5722;
+  }
+  
+  .contact-info,
+  .contact-form {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease;
+  }
+  
+  .contact-info:hover,
+  .contact-form:hover {
+    transform: translateY(-5px);
+  }
+  
+  .contact-info-title,
+  .contact-form-title {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .contact-item-icon {
+    font-size: 30px;
+    margin-right: 15px;
+    color: #ff5722;
+  }
+  
+  .contact-item-label {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .contact-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contact-form form .MuiFormControl-root {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .contact-form form .MuiButton-root {
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  .contact-form form .MuiButton-containedPrimary {
+    background-color: #ff5722;
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  
+  .contact-form form .MuiButton-containedPrimary:hover {
+    background-color: #e64a19;
+  }
+  
+  .contact-image-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-image {
+    width: 100%;
+    max-width: 100%;
+    transition: transform 0.3s ease;
+  }
+  
+  .contact-image:hover {
+    transform: scale(1.05);
+  }
+  
