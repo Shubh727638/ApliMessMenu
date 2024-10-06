@@ -4,9 +4,11 @@ import { Box, Typography, Grid, Button, IconButton } from "@mui/material";
 import '../styles/About.css'; // Import custom CSS for additional styling
 import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
+import BgAb from '../Images/BgAb.jpg';
+
 
 const About = () => {
-  const [rating, setRating] = React.useState(4.5); // Set initial rating to 4.5
+  const [rating] = React.useState(4.5); // Set initial rating to 4.5
 
   // Disable rating click
   const handleRatingClick = () => {
@@ -15,7 +17,7 @@ const About = () => {
 
   return (
     <Layout>
-      <Box className="container">
+      <Box className="container" style={{backgroundImage: `url(${BgAb})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
         <Typography variant="h2" className="heading">
           <span className="gradient-text">Discover Delicious Meals</span>
         </Typography>

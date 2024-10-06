@@ -1,0 +1,105 @@
+/* Container for user profile and plan details */
+.plan-details-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+  }
+  
+  /* User profile section */
+  .user-profile {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .profile-text {
+    color: #333;
+  }
+  
+  /* Plan details section */
+  .plan-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  
+  .plan-details-item {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+    transition: box-shadow 0.3s ease; /* Add transition for box shadow */
+  }
+  
+  .plan-details h1 {
+    color: #333;
+  }
+  
+  .plan-details p {
+    margin: 0;
+  }
+  
+  .feature-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .feature-list-item {
+    margin-bottom: 5px;
+  }
+  
+  /* Login and Logout buttons */
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s ease; /* Add transition for background color and transform */
+  }
+  
+  .button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px); /* Add slight upward movement on hover */
+  }
+  .login-button {
+    display: inline-block;
+    padding: 12px 24px; /* Increase padding for a larger button */
+    background-color: #007bff; /* Blue color for login button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; /* Adjust font size */
+    transition: background-color 0.3s, transform 0.2s ease; /* Add transition for background color and transform */
+  }
+  
+  .login-button:hover {
+    display: inline-block;
+    padding: 12px 24px; /* Increase padding for a larger button */
+    background-color: #007bff; /* Blue color for login button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; /* Adjust font size */
+    transition: background-color 0.3s, transform 0.2s ease; /* Add transition for background color and transform */
+     
+  }
+
+
+

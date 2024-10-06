@@ -1,26 +1,32 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '../components/Layout/Layout';
-import '../styles/Mess.css';
-import mess1 from '../Images/mess1.jpg';
-import mess2 from '../Images/mess2.jpg';
-import mess3 from '../Images/mess3.jpg';
+import '../styles/Mess.css'; 
+
+import axios from 'axios'; // Import Axios
 
 const Mess = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredMesses, setFilteredMesses] = useState([]);
   const [selectedMess, setSelectedMess] = useState(null);
 
-  // Dummy mess data with images and menus
-  const data = [
-    { id: 1, name: 'Anapurna Mess', image: mess1, menu: ['Breakfast: Item 1', 'Lunch: Item 4', 'Dinner: Item 7'] },
-    { id: 2, name: 'Shivnery Mess', image: mess2, menu: ['Breakfast: Item 2', 'Lunch: Item 5', 'Dinner: Item 8'] },
-    { id: 3, name: 'Krupa Mess', image: mess3, menu: ['Breakfast: Item 3', 'Lunch: Item 6', 'Dinner: Item 9'] },
-  ];
+  useEffect(() => {
+    // Fetch mess data from the backend API when the component mounts
+    fetchMessData();
+  }, []);
+
+  const fetchMessData = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/api/messes');
+      setFilteredMesses(response.data);
+    } catch (error) {
+      console.error('Error fetching mess data:', error);
+    }
+  };
 
   // Function to handle search
   const handleSearch = () => {
     // Filter messes based on searchQuery
-    const filtered = data.filter(mess =>
+    const filtered = filteredMesses.filter(mess =>
       mess.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       mess.menu.some(item => item.toLowerCase().includes(searchQuery.toLowerCase()))
     );
@@ -35,7 +41,7 @@ const Mess = () => {
 
   return (
     <Layout>
-      <div className="mess-page">
+      <div className="mess-page with-background-image">
         <div className="landing-container">
           <h1 className="landing-title">Welcome to Mess Page</h1>
           <p className="landing-text">Find the mess that suits your cravings today!</p>

@@ -7,11 +7,13 @@ import CallIcon from "@mui/icons-material/Call";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import '../styles/Contact.css'; // Import custom CSS for additional styling
 // import contactImage from "../assets/contact.jpg";
+import contact from '../Images/contact.jpg';
+
 
 const Contact = () => {
   return (
     <Layout>
-      <Box className="contact-container">
+      <Box className="contact-container" style={{backgroundImage: `url(${contact})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
         <Typography variant="h3" className="contact-heading">
           Get In Touch With Us
         </Typography>
