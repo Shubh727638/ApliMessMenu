@@ -25,6 +25,7 @@ const Footer = () => (
           </Typography>
           <Stack spacing={1}>
             <Link component={RouterLink} to="/mess" sx={linkSx}>Find a Mess</Link>
+            <Link component={RouterLink} to="/nearby" sx={linkSx}>Food near me</Link>
             <Link component={RouterLink} to="/about" sx={linkSx}>About us</Link>
             <Link component={RouterLink} to="/plans" sx={linkSx}>Meal plans</Link>
             <Link component={RouterLink} to="/contact" sx={linkSx}>List your mess</Link>

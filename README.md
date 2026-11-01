@@ -48,6 +48,14 @@ npm start       # Express serves the API and the built site on one port
 | GET | `/api/messes?q=&type=veg\|non-veg` | List and search messes (name, area, tags, menu items) |
 | GET | `/api/messes/:id` | One mess, by slug or Mongo id |
 | POST | `/api/contact` | `{ name, email, message }`, validated and stored |
+| GET | `/api/nearby?lat=&lng=&radius=` | Nearby restaurants, cafés, fast food and hotels from OpenStreetMap |
+| GET | `/api/geocode?q=` | Turn an area name into coordinates (OpenStreetMap Nominatim) |
+
+The **Food near me** page uses the free [OpenStreetMap](https://www.openstreetmap.org)
+Overpass and Nominatim APIs — no API key needed. It requires outbound internet from
+the server (available by default on Render and most hosts). Results are cached
+briefly in memory to respect the free usage limits. Data is © OpenStreetMap
+contributors and is attributed in the UI.
 
 ## Before going live
 

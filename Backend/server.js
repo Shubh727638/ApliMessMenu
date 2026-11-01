@@ -25,6 +25,7 @@ app.get('/api/health', (req, res) => {
 });
 app.use('/api/messes', require('./routes/messRoutes'));
 app.use('/api/contact', require('./routes/contactRoutes'));
+app.use('/api', require('./routes/placesRoutes'));
 app.use('/api', (req, res) => res.status(404).json({ error: 'Not found' }));
 
 // Serve the production React build when it exists (single-server deploy).
@@ -50,7 +51,7 @@ if (fs.existsSync(buildDir)) {
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
   console.error(err);
-  res.status(500).json({ error: 'Something went wrong. Please try again.' });
+  res.status(err.status || 500).json({ error: err.userMessage || 'Something went wrong. Please try again.' });
 });
 
 async function start() {

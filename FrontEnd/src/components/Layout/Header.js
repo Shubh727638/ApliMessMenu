@@ -24,6 +24,7 @@ import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
 const NAV = [
   { to: '/', label: 'Home', end: true },
   { to: '/mess', label: 'Find a Mess' },
+  { to: '/nearby', label: 'Food Near Me' },
   { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
   { to: '/plans', label: 'Plans' },

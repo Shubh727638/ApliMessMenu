@@ -15,6 +15,7 @@ import {
   Typography,
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import MyLocationIcon from '@mui/icons-material/MyLocation';
 import StarRoundedIcon from '@mui/icons-material/StarRounded';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
@@ -99,6 +100,17 @@ const Home = () => {
                 Find
               </Button>
             </Paper>
+            <Stack direction="row" gap={1.5} sx={{ mt: 2 }} flexWrap="wrap">
+              <Button
+                component={RouterLink}
+                to="/nearby"
+                variant="outlined"
+                startIcon={<MyLocationIcon />}
+                sx={{ color: '#fff', borderColor: 'rgba(255,255,255,.5)', '&:hover': { borderColor: '#fff', bgcolor: 'rgba(255,255,255,.1)' } }}
+              >
+                Food near me
+              </Button>
+            </Stack>
             <Stack direction="row" gap={1} flexWrap="wrap" sx={{ mt: 2 }}>
               <Typography variant="body2" sx={{ opacity: 0.8, alignSelf: 'center' }}>
                 Popular:

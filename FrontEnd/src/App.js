@@ -9,6 +9,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Mess from './pages/Mess';
 import MessDetails from './pages/MessDetails';
+import Nearby from './pages/Nearby';
 import Pagenotfound from './pages/Pagenotfound';
 import PlanDetails from './pages/PlanDetails';
 
@@ -45,6 +46,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/mess" element={<Mess />} />
             <Route path="/mess/:id" element={<MessDetails />} />
+            <Route path="/nearby" element={<Nearby />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/plans" element={<PlanDetails />} />

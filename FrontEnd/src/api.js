@@ -29,3 +29,9 @@ export const fetchMess = (id, signal) => request(`/messes/${encodeURIComponent(i
 
 export const sendContact = (body) =>
   request('/contact', { method: 'POST', body: JSON.stringify(body) });
+
+export const fetchNearby = ({ lat, lng, radius }, signal) =>
+  request(`/nearby?lat=${lat}&lng=${lng}&radius=${radius}`, { signal });
+
+export const geocodePlace = (q, signal) =>
+  request(`/geocode?q=${encodeURIComponent(q)}`, { signal });
