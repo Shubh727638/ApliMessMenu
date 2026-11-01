@@ -1,36 +1,59 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { Auth0Provider } from '@auth0/auth0-react';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import theme from './theme';
+import { AUTH0_CLIENT_ID, AUTH0_DOMAIN } from './config';
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Mess from './pages/Mess';
+import MessDetails from './pages/MessDetails';
 import Pagenotfound from './pages/Pagenotfound';
 import PlanDetails from './pages/PlanDetails';
-//import PrivateRoute from './pages/PrivateRoute'; // Import PrivateRoute component
 
-const domain = 'dev-fbkinoo8f2q6g3nk.us.auth0.com';
-const clientId = 'hRR9Ch4YfsiWa8sBu2sLF54O9hbXOzpQ';
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => window.scrollTo(0, 0), [pathname]);
+  return null;
+};
+
+// Auth0 needs router access to send users back where they started after login.
+const AuthProvider = ({ children }) => {
+  const navigate = useNavigate();
+  return (
+    <Auth0Provider
+      domain={AUTH0_DOMAIN}
+      clientId={AUTH0_CLIENT_ID}
+      authorizationParams={{ redirect_uri: window.location.origin }}
+      onRedirectCallback={(appState) => navigate(appState?.returnTo || '/', { replace: true })}
+      cacheLocation="localstorage"
+    >
+      {children}
+    </Auth0Provider>
+  );
+};
 
 function App() {
   return (
-    <Auth0Provider
-      domain={domain}
-      clientId={clientId}
-      // Use authorizationParams to specify redirect_uri
-      authorizationParams={{ redirect_uri: window.location.origin }}
-    >
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/mess" element={<Mess />} />
-          <Route path="/planDetails" element={<PlanDetails />} /> {/* Use PrivateRoute */}
-          <Route path="*" element={<Pagenotfound />} />
-        </Routes>
+        <AuthProvider>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/mess" element={<Mess />} />
+            <Route path="/mess/:id" element={<MessDetails />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/plans" element={<PlanDetails />} />
+            <Route path="/planDetails" element={<Navigate to="/plans" replace />} />
+            <Route path="*" element={<Pagenotfound />} />
+          </Routes>
+        </AuthProvider>
       </BrowserRouter>
-    </Auth0Provider>
+    </ThemeProvider>
   );
 }
 

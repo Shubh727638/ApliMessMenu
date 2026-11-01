@@ -1,75 +1,56 @@
-<<<<<<< HEAD
-# Getting Started with Create React App
+# Apli Mess Menu
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Find nearby messes and tiffin services. Compare daily menus, prices, timings and ratings, and save the ones you like.
 
-## Available Scripts
+- **FrontEnd/**: React 18 + MUI single-page app (Create React App)
+- **Backend/**: Express + MongoDB (Mongoose) API
 
-In the project directory, you can run:
+## Quick start
 
-### `npm start`
+```bash
+npm run install-all   # installs root, Backend and FrontEnd dependencies
+npm run dev           # API on :5000 + React dev server on :3000
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open http://localhost:3000.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+MongoDB is optional for local development. If the API can't reach MongoDB it serves the
+built-in sample listings from `Backend/data/seedMesses.js`, so the site works out of the box.
+When MongoDB is reachable and the `messes` collection is empty, the sample data is inserted
+automatically. `npm run seed` resets the collection to the sample data.
 
-### `npm test`
+## Configuration
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Copy the example env files (`Backend/.env.example`, `FrontEnd/.env.example`) to `.env` and adjust them:
 
-### `npm run build`
+| File | Variable | Purpose |
+| --- | --- | --- |
+| `Backend/.env` | `PORT` | API port (default `5000`) |
+| | `MONGODB_URI` | MongoDB connection string |
+| | `CORS_ORIGIN` | Comma-separated allowed origins (empty = allow all) |
+| `FrontEnd/.env` | `REACT_APP_API_URL` | API base URL if it's hosted on another domain |
+| | `REACT_APP_AUTH0_DOMAIN` / `REACT_APP_AUTH0_CLIENT_ID` | Auth0 SPA app used for login |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+In Auth0, add your site URL to **Allowed Callback URLs**, **Allowed Logout URLs** and **Allowed Web Origins**.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Production
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm run build   # builds FrontEnd/build
+npm start       # Express serves the API and the built site on one port
+```
 
-### `npm run eject`
+## API
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+| Method | Path | Description |
+| --- | --- | --- |
+| GET | `/api/health` | Health check, reports whether MongoDB or sample data is in use |
+| GET | `/api/messes?q=&type=veg\|non-veg` | List and search messes (name, area, tags, menu items) |
+| GET | `/api/messes/:id` | One mess, by slug or Mongo id |
+| POST | `/api/contact` | `{ name, email, message }`, validated and stored |
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Before going live
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# ApliMessMenu
-This Project help to find mess menu for student and all other people
->>>>>>> 57e873591ffa102eb316935d521c062f8283d5fe
+- Replace the sample listings in `Backend/data/seedMesses.js` (names, phones and prices are placeholders).
+- Add real photos by setting `image` (a URL) on each mess. Without one, a generated cover is shown.
+- Check the contact details in `FrontEnd/src/config.js`.

@@ -1,1 +1,16 @@
-{\n  "name": "apli-mess-menu-full",\n  "version": "1.0.0",\n  "description": "This Project help to find mess menu for student and all other people",\n  "private": true,\n  "scripts": {\n    "install-all": "npm install && cd Backend && npm install && cd ../FrontEnd && npm install && cd ..",\n    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",\n    "start:backend": "cd Backend && node index.js",\n    "start:backend:dev": "cd Backend && nodemon index.js",\n    "start:frontend": "cd FrontEnd && npm start",\n    "build": "cd FrontEnd && npm run build",\n    "dev": "concurrently \"npm run start:backend:dev\" \"npm run start:frontend\""\n  },\n  "devDependencies": {\n    "concurrently": "^8.2.2"\n  }\n}
+{
+  "name": "apli-mess-menu-full",
+  "version": "1.0.0",
+  "description": "Find mess menus, prices and timings near you",
+  "private": true,
+  "scripts": {
+    "install-all": "npm install && npm --prefix Backend install && npm --prefix FrontEnd install",
+    "dev": "concurrently -n api,web -c blue,magenta \"npm --prefix Backend run dev\" \"npm --prefix FrontEnd start\"",
+    "build": "npm --prefix FrontEnd run build",
+    "start": "npm --prefix Backend start",
+    "seed": "npm --prefix Backend run seed"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
