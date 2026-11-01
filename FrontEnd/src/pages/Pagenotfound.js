@@ -1,41 +1,29 @@
 import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
+import { Button, Container, Stack, Typography } from '@mui/material';
+import NoMealsIcon from '@mui/icons-material/NoMeals';
 import Layout from '../components/Layout/Layout';
-import Typography from '@mui/material/Typography';
-import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
-import MoodBadIcon from '@mui/icons-material/MoodBad';
-import Fade from '@mui/material/Fade';
-import { Grid } from '@mui/material';
-import '../styles/PageNotFound.css'; // Import the CSS file
 
-const Pagenotfound = () => {
-  return (
-    <Layout>
-      <Grid 
-        container
-        direction="column"
-        justifyContent="center"
-        alignItems="center"
-        className="root"
-      >
-        <Grid item>
-          <Typography variant="h3" gutterBottom>
-            Oops! Page not Found
-          </Typography>
-          <Typography variant="subtitle1" align="center" gutterBottom>
-            The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
-          </Typography>
-        </Grid>
-        <Grid item className="icon-container">
-          <Fade in timeout={1000}>
-            <ErrorOutlineIcon className="icon" />
-          </Fade>
-          <Fade in timeout={1500}>
-            <MoodBadIcon className="icon" />
-          </Fade>
-        </Grid>
-      </Grid>
-    </Layout>
-  );
-};
+const Pagenotfound = () => (
+  <Layout title="Page not found">
+    <Container maxWidth="sm" sx={{ py: { xs: 10, md: 16 }, textAlign: 'center' }}>
+      <NoMealsIcon sx={{ fontSize: 80, color: 'primary.main', mb: 2 }} />
+      <Typography variant="h3" component="h1" gutterBottom>
+        Page not found
+      </Typography>
+      <Typography color="text.secondary" sx={{ mb: 4 }}>
+        Looks like this plate is empty. The page you're looking for may have moved or no longer exists.
+      </Typography>
+      <Stack direction="row" spacing={2} justifyContent="center">
+        <Button component={RouterLink} to="/" variant="contained">
+          Go home
+        </Button>
+        <Button component={RouterLink} to="/mess" variant="outlined">
+          Find a mess
+        </Button>
+      </Stack>
+    </Container>
+  </Layout>
+);
 
 export default Pagenotfound;

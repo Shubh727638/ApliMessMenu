@@ -1,26 +1,27 @@
 const express = require('express');
+const store = require('../store');
+
 const router = express.Router();
-const Mess = require('../models/mess');
 
-// Define routes
-router.get('/', async (req, res) => {
+// GET /api/messes?q=poha&type=veg
+router.get('/', async (req, res, next) => {
   try {
-    // Fetch mess data from MongoDB
-    const messes = await Mess.find();
+    const q = typeof req.query.q === 'string' ? req.query.q.trim().slice(0, 100) : '';
+    const type = ['veg', 'non-veg'].includes(req.query.type) ? req.query.type : undefined;
+    res.json(await store.listMesses({ q, type }));
+  } catch (err) {
+    next(err);
+  }
+});
 
-    // Map over messes to include image URLs
-    const messesWithImages = messes.map(mess => ({
-      _id: mess._id,
-      name: mess.name,
-      menu: mess.menu,
-      // Assuming the image field contains the image URL
-      image: mess.image
-    }));
-
-    res.json(messesWithImages);
-  } catch (error) {
-    console.error('Error fetching mess data:', error);
-    res.status(500).json({ error: 'Internal server error' });
+// GET /api/messes/:id  (Mongo id or slug)
+router.get('/:id', async (req, res, next) => {
+  try {
+    const mess = await store.getMess(req.params.id);
+    if (!mess) return res.status(404).json({ error: 'Mess not found' });
+    res.json(mess);
+  } catch (err) {
+    next(err);
   }
 });
 
