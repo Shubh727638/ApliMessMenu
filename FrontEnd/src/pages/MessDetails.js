@@ -32,6 +32,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import DirectionsIcon from '@mui/icons-material/Directions';
 import Layout from '../components/Layout/Layout';
+import ShareButton from '../components/ShareButton';
 import MessArt from '../components/Mess/MessArt';
 import { VegBadge, formatINR } from '../components/Mess/MessCard';
 import useFavorites from '../hooks/useFavorites';
@@ -215,6 +216,12 @@ const MessDetails = () => {
                   >
                     {saved ? 'Saved' : 'Save for later'}
                   </Button>
+                  <ShareButton
+                    variant="text"
+                    label="Share this mess"
+                    title={`${mess.name} on Apli Mess Menu`}
+                    text={`Check out ${mess.name} (${mess.area}) on Apli Mess Menu`}
+                  />
                 </Stack>
               </CardContent>
             </Card>

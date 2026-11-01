@@ -5,6 +5,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 import MessArt from './MessArt';
+import ShareButton from '../ShareButton';
 
 export const VegBadge = ({ type }) => {
   const veg = type !== 'non-veg';
@@ -29,16 +30,27 @@ const MessCard = ({ mess, isFavorite, onToggleFavorite }) => {
 
   return (
     <Card sx={{ height: '100%', position: 'relative', transition: 'transform .2s, box-shadow .2s', '&:hover': { transform: 'translateY(-4px)' } }}>
-      <Tooltip title={isFavorite ? 'Remove from saved' : 'Save'}>
-        <IconButton
-          onClick={() => onToggleFavorite(id)}
-          aria-label={isFavorite ? `Remove ${mess.name} from saved` : `Save ${mess.name}`}
-          aria-pressed={isFavorite}
-          sx={{ position: 'absolute', top: 10, right: 10, zIndex: 1, bgcolor: 'rgba(255,255,255,0.92)', '&:hover': { bgcolor: '#fff' } }}
-        >
-          {isFavorite ? <FavoriteIcon color="primary" /> : <FavoriteBorderIcon />}
-        </IconButton>
-      </Tooltip>
+      <Stack direction="row" spacing={0.5} sx={{ position: 'absolute', top: 10, right: 10, zIndex: 1 }}>
+        <ShareButton
+          variant="icon"
+          size="small"
+          title={`${mess.name} on Apli Mess Menu`}
+          text={`Check out ${mess.name} (${mess.area}) on Apli Mess Menu`}
+          url={`${window.location.origin}/mess/${id}`}
+          sx={{ bgcolor: 'rgba(255,255,255,0.92)', '&:hover': { bgcolor: '#fff' } }}
+        />
+        <Tooltip title={isFavorite ? 'Remove from saved' : 'Save'}>
+          <IconButton
+            onClick={() => onToggleFavorite(id)}
+            aria-label={isFavorite ? `Remove ${mess.name} from saved` : `Save ${mess.name}`}
+            aria-pressed={isFavorite}
+            size="small"
+            sx={{ bgcolor: 'rgba(255,255,255,0.92)', '&:hover': { bgcolor: '#fff' } }}
+          >
+            {isFavorite ? <FavoriteIcon color="primary" /> : <FavoriteBorderIcon />}
+          </IconButton>
+        </Tooltip>
+      </Stack>
       <CardActionArea component={RouterLink} to={`/mess/${id}`} sx={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}>
         <MessArt mess={mess} height={160} />
         <CardContent sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 1 }}>

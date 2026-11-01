@@ -30,8 +30,21 @@ app.use('/api', (req, res) => res.status(404).json({ error: 'Not found' }));
 // Serve the production React build when it exists (single-server deploy).
 const buildDir = path.join(__dirname, '..', 'FrontEnd', 'build');
 if (fs.existsSync(buildDir)) {
+  app.set('trust proxy', true);
   app.use(express.static(buildDir, { maxAge: '7d', index: false }));
-  app.get('*', (req, res) => res.sendFile(path.join(buildDir, 'index.html')));
+
+  const { metaFor } = require('./meta');
+  const indexHtml = fs.readFileSync(path.join(buildDir, 'index.html'), 'utf8');
+
+  // Inject per-page social-preview tags so shared links render a rich card.
+  app.get('*', async (req, res, next) => {
+    try {
+      const html = indexHtml.replace(/<meta name="ssr-social"[^>]*>/, await metaFor(req));
+      res.set('Cache-Control', 'no-cache').type('html').send(html);
+    } catch (err) {
+      next(err);
+    }
+  });
 }
 
 // eslint-disable-next-line no-unused-vars
