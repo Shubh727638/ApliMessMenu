@@ -1,0 +1,17 @@
+# Render Blueprint — one free web service that builds the React app and runs the
+# Express server (which serves both the API and the built site).
+# Docs: https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: apli-mess-menu
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm --prefix FrontEnd install && npm --prefix FrontEnd run build && npm --prefix Backend install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      # Set this in the Render dashboard to your MongoDB Atlas connection string.
+      - key: MONGODB_URI
+        sync: false
